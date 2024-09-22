@@ -20,7 +20,7 @@ public class AwsStarterProjectApplication {
 
         @GetMapping
         public String test() {
-            return "Test worked!";
+            return "We've got everything running";
         }
     }
 }
