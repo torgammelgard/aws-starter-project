@@ -16,7 +16,7 @@ export default {
   methods: {
     async fetchData() {
       try {
-        const response = await fetch('http://localhost:8080/api/test');  // Ensure the backend is running on port 8080
+        const response = await fetch('http://localhost:8080/api/test');
         const data = await response.text();
         this.backendData = data;
       } catch (error) {
