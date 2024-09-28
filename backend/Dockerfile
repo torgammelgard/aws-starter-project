@@ -1,16 +1,14 @@
+FROM gradle:jdk17 AS buildstage
+WORKDIR /usr/app/
+COPY . .
+RUN gradle build
+
 FROM amazoncorretto:17
 LABEL authors="torgammelgard"
 
 WORKDIR /app
 
-COPY build.gradle settings.gradle /app/
-COPY src /app/src
-COPY gradlew /app/gradlew
-COPY gradle /app/gradle
-
-RUN chmod +x ./gradlew
-
-RUN ./gradlew clean build -x test
+COPY --from=buildstage /usr/app/ .
 
 EXPOSE 8080
 
